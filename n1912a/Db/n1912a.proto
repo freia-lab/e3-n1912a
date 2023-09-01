@@ -1,0 +1,31 @@
+# Protocol file for Keysight N1912A power meter
+
+Terminator = LF;
+#ReadTimeout = 200;
+
+ReplyTimeout = 5000;
+
+
+
+P = "HPRF-PwrMtr:";
+DEV = "N1912A";
+
+get_id {
+   out "*idn?";
+   in "%#s";
+   @init { out "*idn?";
+   	 in "%#s"; }
+}
+
+get_err {
+   out "syst:err?";
+   in "%(" $P $DEV ":SystErr)#s";
+}
+
+reset {
+   out "*RST";
+   
+   out "syst:err?";
+   in "0,\"No error;0;0 0\"";
+   @mismatch {in "%(" $P $DEV ":SystErr)#s";}  
+}

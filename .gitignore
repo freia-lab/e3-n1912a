@@ -10,6 +10,7 @@
 core.*
 *-loc/*.Makefile
 n1912a/*.Makefile
+n1912a/O*
 cellMods/
 testMods*/
 *PVs.list
