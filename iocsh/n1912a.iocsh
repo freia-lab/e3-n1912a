@@ -32,4 +32,6 @@ dbLoadRecords("n1912a.db", "PORT=$(ASYN_PORT=PORT1),P=$(P),DEV=$(DEV=N1912A)")
 
 dbLoadRecords("asynRecord.db","P=${IOCNAME},R=:asynRec,PORT=$(ASYN_PORT=PORT1),ADDR='0',IMAX='1024',OMAX='256'")
 
-iocshLoad("$(autosave_DIR)/autosave.iocsh", "AS_TOP=$(TOP),IOCNAME=$(IOCNAME),IOCDIR=$(IOCDIR=n1912a)")
+# MJ:
+# commenting for now to avoid warnings
+# iocshLoad("$(autosave_DIR)/autosave.iocsh", "AS_TOP=$(TOP),IOCNAME=$(IOCNAME),IOCDIR=$(IOCDIR=n1912a)")

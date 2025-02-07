@@ -3,8 +3,8 @@ file "n1912a-gen.template" { pattern
 {}
 }
 
-#file "n1912a-chan.template" { pattern
-#{CHAN}
-#{01}
-#{02}
-#}
+file "n1912a-chan.template" { pattern
+{CHAN}
+{1}
+{2}
+}

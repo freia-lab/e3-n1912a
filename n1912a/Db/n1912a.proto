@@ -5,7 +5,7 @@ Terminator = LF;
 
 ReplyTimeout = 5000;
 
-
+DELAY = 50;
 
 P = "HPRF-PwrMtr:";
 DEV = "N1912A";
@@ -28,4 +28,37 @@ reset {
    out "syst:err?";
    in "0,\"No error;0;0 0\"";
    @mismatch {in "%(" $P $DEV ":SystErr)#s";}  
+}
+
+# query power
+
+fetch_power {
+   out "FETC\$1:POW:AC?";
+   wait $DELAY;
+   in "%f";
+}
+
+#switch {
+#   out "SENS\$1:CORR:GAIN2:STAT %{OFF|ON}";
+#}
+
+# enable/disable a channel offset for the power meter setup
+
+set_offset_status {
+   out "SENS\$1:CORR:GAIN2:STAT %i";
+#   in "%#s";
+#   @init { out "INST OUT\$1";
+#           out "OUTP?";
+#   	 in "%i"; }
+#   @mismatch {in "%(\$2:SystErr)#s";}
+}
+
+# query channel offset for the power meter setup
+# returns 0 or 1
+
+get_offset_status {
+   out "SENS\$1:CORR:GAIN2:STAT?";
+   in "%i";
+   @init { out "SENS\$1:CORR:GAIN2:STAT?";
+   	 in "%i"; }
 }

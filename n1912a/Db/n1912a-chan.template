@@ -1,0 +1,40 @@
+# Control offsets/gains for each channel
+# Used for calibration
+
+record(bi, "$(P)$(DEV):Chan$(CHAN):sActive") {
+   field (DESC, "n1912a active = 1, off = 0")
+   field (DTYP, "stream")
+   field (INP, "@n1912a.proto get_offset_status($(CHAN)) $(PORT)")
+#   field (PINI, "YES")
+   field (ZNAM, "OFF")
+   field (ONAM, "ON")
+   field (SCAN, "1 second")
+}
+
+
+#record(bo, "$(P)$(DEV):Chan$(CHAN):SWITCH") {
+#   field (DESC, "n1912a switch test")
+#   field (DTYP, "stream")
+#   field (OUT, "@n1912a.proto switch($(CHAN),$(P)$(DEV)) $(PORT)")
+#   field (ZNAM, "OFF")
+#   field (ONAM, "ON")
+#}
+
+record(bo, "$(P)$(DEV):Chan$(CHAN):cActive") {
+   field (DESC, "n1912a activate = 1, deactivate = 0")
+   field (DTYP, "stream")
+   field (OUT, "@n1912a.proto set_offset_status($(CHAN),$(P)$(DEV)) $(PORT)")
+   field (ZNAM, "OFF")
+   field (ONAM, "ON")
+}
+
+
+record(ai, "$(P)$(DEV):Chan$(CHAN):RdMeasPwr") {
+   field (DESC, "n1912a read meas power")
+   field (DTYP, "stream")
+   field (INP, "@n1912a.proto fetch_power($(CHAN),DBM) $(PORT)")
+   field (EGU, "DBM")
+   field (PINI, "YES")
+   field (SCAN, "1 second")
+#   field (FLNK, "$(P)$(DEV):Chan$(CHAN):RdMeasCurr")
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2023-09-01 12:20:08 by konrad-->
+<!--Saved on 2025-02-07 16:34:26 by marek-->
 <display version="2.0.0">
   <name>N1912A</name>
   <macros>
@@ -55,6 +55,7 @@
           <R>:asynRec</R>
         </macros>
         <target>window</target>
+        <description>Open Display</description>
       </action>
     </actions>
     <pv_name>ioc30-n1912:asynRec</pv_name>
@@ -71,5 +72,21 @@
       <color red="240" green="240" blue="240">
       </color>
     </background_color>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED</name>
+    <pv_name>$(P)$(D):Chan1:sActive.VAL</pv_name>
+    <x>60</x>
+    <y>150</y>
+    <width>70</width>
+    <height>30</height>
+  </widget>
+  <widget type="bool_button" version="2.0.0">
+    <name>Boolean Button</name>
+    <pv_name>$(P)$(D):Chan2:sActive.VAL</pv_name>
+    <x>50</x>
+    <y>240</y>
+    <width>80</width>
+    <height>70</height>
   </widget>
 </display>
