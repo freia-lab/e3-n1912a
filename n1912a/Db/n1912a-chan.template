@@ -12,14 +12,6 @@ record(bi, "$(P)$(DEV):Chan$(CHAN):sActive") {
 }
 
 
-#record(bo, "$(P)$(DEV):Chan$(CHAN):SWITCH") {
-#   field (DESC, "n1912a switch test")
-#   field (DTYP, "stream")
-#   field (OUT, "@n1912a.proto switch($(CHAN),$(P)$(DEV)) $(PORT)")
-#   field (ZNAM, "OFF")
-#   field (ONAM, "ON")
-#}
-
 record(bo, "$(P)$(DEV):Chan$(CHAN):cActive") {
    field (DESC, "n1912a activate = 1, deactivate = 0")
    field (DTYP, "stream")
@@ -32,9 +24,27 @@ record(bo, "$(P)$(DEV):Chan$(CHAN):cActive") {
 record(ai, "$(P)$(DEV):Chan$(CHAN):RdMeasPwr") {
    field (DESC, "n1912a read meas power")
    field (DTYP, "stream")
-   field (INP, "@n1912a.proto fetch_power($(CHAN),DBM) $(PORT)")
-   field (EGU, "DBM")
+   field (INP, "@n1912a.proto fetch_power($(CHAN)) $(PORT)")
+   field (EGU, "dBm")
    field (PINI, "YES")
    field (SCAN, "1 second")
 #   field (FLNK, "$(P)$(DEV):Chan$(CHAN):RdMeasCurr")
+}
+
+record(ai, "$(P)$(DEV):Chan$(CHAN):RdOffset") {
+   field (DESC, "n1912a read offset")
+   field (DTYP, "stream")
+   field (INP, "@n1912a.proto fetch_offset($(CHAN)) $(PORT)")
+   field (EGU, "dB")
+   field (PINI, "YES")
+   field (SCAN, "1 second")
+#   field (FLNK, "$(P)$(DEV):Chan$(CHAN):RdMeasCurr")
+}
+
+record(ao, "$(P)$(DEV):Chan$(CHAN):Offset"){   
+   field (DESC, "n1912a power offset")
+   field (DTYP, "stream")
+   field (OUT, "@n1912a.proto set_offset($(CHAN),$(P)$(DEV)) $(PORT)")
+   field (DRVL, "0")
+   field (DRVH, "100")
 }

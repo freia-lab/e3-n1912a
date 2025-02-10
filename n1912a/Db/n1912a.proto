@@ -38,15 +38,28 @@ fetch_power {
    in "%f";
 }
 
-#switch {
-#   out "SENS\$1:CORR:GAIN2:STAT %{OFF|ON}";
-#}
+# query offset
+
+fetch_offset {
+   out "SENS\$1:CORR:GAIN2?";
+   wait $DELAY;
+   in "%f";
+}
+
+# set offset
+
+set_offset {
+   out "SENS\$1:CORR:GAIN2 %f";
+#   @init { out "INST OUT\$1";
+#           out "OUTP?";
+#   	 in "%i"; }
+#   @mismatch {in "%(\$2:SystErr)#s";}
+}
 
 # enable/disable a channel offset for the power meter setup
 
 set_offset_status {
    out "SENS\$1:CORR:GAIN2:STAT %i";
-#   in "%#s";
 #   @init { out "INST OUT\$1";
 #           out "OUTP?";
 #   	 in "%i"; }
