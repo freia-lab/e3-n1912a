@@ -1,50 +1,100 @@
+# Channel specific records
+
 # Control offsets/gains for each channel
 # Used for calibration
 
-record(bi, "$(P)$(DEV):Chan$(CHAN):sActive") {
+record(bi, "$(P)$(DEV1)-Offset:sOn") {
    field (DESC, "n1912a active = 1, off = 0")
    field (DTYP, "stream")
-   field (INP, "@n1912a.proto get_offset_status($(CHAN)) $(PORT)")
+   field (INP, "@n1912a.proto get_offset_status(1) $(PORT)")
 #   field (PINI, "YES")
    field (ZNAM, "OFF")
    field (ONAM, "ON")
    field (SCAN, "1 second")
 }
 
+record(bi, "$(P)$(DEV2)-Offset:sOn") {
+   field (DESC, "n1912a active = 1, off = 0")
+   field (DTYP, "stream")
+   field (INP, "@n1912a.proto get_offset_status(2) $(PORT)")
+#   field (PINI, "YES")
+   field (ZNAM, "OFF")
+   field (ONAM, "ON")
+   field (SCAN, "1 second")
+}
 
-record(bo, "$(P)$(DEV):Chan$(CHAN):cActive") {
+###########################################
+
+record(bo, "$(P)$(DEV1)-Offset:cOn") {
    field (DESC, "n1912a activate = 1, deactivate = 0")
    field (DTYP, "stream")
-   field (OUT, "@n1912a.proto set_offset_status($(CHAN),$(P)$(DEV)) $(PORT)")
+   field (OUT, "@n1912a.proto set_offset_status(1) $(PORT)")
    field (ZNAM, "OFF")
    field (ONAM, "ON")
 }
 
+record(bo, "$(P)$(DEV2)-Offset:cOn") {
+   field (DESC, "n1912a activate = 1, deactivate = 0")
+   field (DTYP, "stream")
+   field (OUT, "@n1912a.proto set_offset_status(2) $(PORT)")
+   field (ZNAM, "OFF")
+   field (ONAM, "ON")
+}
 
-record(ai, "$(P)$(DEV):Chan$(CHAN):RdMeasPwr") {
+###########################################
+
+record(ai, "$(P)$(DEV1):sRdV") {
    field (DESC, "n1912a read meas power")
    field (DTYP, "stream")
-   field (INP, "@n1912a.proto fetch_power($(CHAN)) $(PORT)")
+   field (INP, "@n1912a.proto fetch_power(1) $(PORT)")
    field (EGU, "dBm")
    field (PINI, "YES")
    field (SCAN, "1 second")
-#   field (FLNK, "$(P)$(DEV):Chan$(CHAN):RdMeasCurr")
 }
 
-record(ai, "$(P)$(DEV):Chan$(CHAN):RdOffset") {
-   field (DESC, "n1912a read offset")
+record(ai, "$(P)$(DEV2):sRdV") {
+   field (DESC, "n1912a read meas power")
    field (DTYP, "stream")
-   field (INP, "@n1912a.proto fetch_offset($(CHAN)) $(PORT)")
+   field (INP, "@n1912a.proto fetch_power(2) $(PORT)")
+   field (EGU, "dBm")
+   field (PINI, "YES")
+   field (SCAN, "1 second")
+}
+
+###########################################
+
+record(ai, "$(P)$(DEV1)-Offset:sSetV") {
+   field (DESC, "n1912a status of gain offset")
+   field (DTYP, "stream")
+   field (INP, "@n1912a.proto fetch_offset(1) $(PORT)")
    field (EGU, "dB")
    field (PINI, "YES")
    field (SCAN, "1 second")
-#   field (FLNK, "$(P)$(DEV):Chan$(CHAN):RdMeasCurr")
 }
 
-record(ao, "$(P)$(DEV):Chan$(CHAN):Offset"){   
-   field (DESC, "n1912a power offset")
+record(ai, "$(P)$(DEV2)-Offset:sSetV") {
+   field (DESC, "n1912a status of gain offset")
    field (DTYP, "stream")
-   field (OUT, "@n1912a.proto set_offset($(CHAN),$(P)$(DEV)) $(PORT)")
+   field (INP, "@n1912a.proto fetch_offset(2) $(PORT)")
+   field (EGU, "dB")
+   field (PINI, "YES")
+   field (SCAN, "1 second")
+}
+
+###########################################
+
+record(ao, "$(P)$(DEV1)-Offset:cSetV"){   
+   field (DESC, "n1912a control gain offset")
+   field (DTYP, "stream")
+   field (OUT, "@n1912a.proto set_offset(1) $(PORT)")
+   field (DRVL, "0")
+   field (DRVH, "100")
+}
+
+record(ao, "$(P)$(DEV2)-Offset:cSetV"){   
+   field (DESC, "n1912a control gain offset")
+   field (DTYP, "stream")
+   field (OUT, "@n1912a.proto set_offset(2) $(PORT)")
    field (DRVL, "0")
    field (DRVH, "100")
 }

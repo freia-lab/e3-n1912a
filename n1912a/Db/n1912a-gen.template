@@ -1,4 +1,6 @@
-record(lsi, "$(P)$(DEV):Id") {
+# general purpose records
+
+record(lsi, "$(P)Id") {
    field (DESC, "RF power meter id")
    field (DTYP, "stream")
    field (INP, "@n1912a.proto get_id $(PORT)")
@@ -6,10 +8,10 @@ record(lsi, "$(P)$(DEV):Id") {
    field (PINI, "YES")
 }
 
-record(lsi, "$(P)$(DEV):SystErr") {
+record(lsi, "$(P)SystErr") {
    field (DESC, "HPM system error")
    field (DTYP, "stream")
-   field (INP, "@n1912a.proto get_err($(P)$(DEV)) $(PORT)")
+   field (INP, "@n1912a.proto get_err($(P)) $(PORT)")
    field (SIZV, "100")
    field (PINI, "YES")
    field (SCAN, "1 second")
