@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-02-10 17:23:00 by marek-->
+<!--Saved on 2025-02-11 18:11:51 by marek-->
 <display version="2.0.0">
   <name>N1912A</name>
   <macros>
-    <D>N1912A</D>
-    <P>HPRF-PwrMtr:</P>
+    <P>LLRF-Ctrl:</P>
   </macros>
   <widget type="label" version="2.0.0">
     <name>Label</name>
@@ -39,7 +38,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>$(P)$(D):Id.$</pv_name>
+    <pv_name>$(P)Id.$</pv_name>
     <x>120</x>
     <y>570</y>
     <width>660</width>
@@ -76,26 +75,25 @@
   <widget type="embedded" version="2.0.0">
     <name>Power Display</name>
     <macros>
-      <C>1</C>
-      <P>HPRF-PwrMtr:</P>
+      <D>Channel1</D>
     </macros>
     <file>n1912a_channel.bob</file>
     <x>10</x>
     <y>90</y>
     <width>300</width>
-    <height>150</height>
+    <height>200</height>
     <resize>2</resize>
   </widget>
   <widget type="embedded" version="2.0.0">
     <name>Power Display_1</name>
     <macros>
-      <C>2</C>
+      <D>Channel2</D>
     </macros>
     <file>n1912a_channel.bob</file>
     <x>10</x>
     <y>300</y>
     <width>300</width>
-    <height>150</height>
+    <height>200</height>
     <resize>2</resize>
   </widget>
 </display>
