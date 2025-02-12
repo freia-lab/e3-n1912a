@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-02-10 17:22:09 by marek-->
+<!--Saved on 2025-02-11 18:11:18 by marek-->
 <display version="2.0.0">
   <name>Display</name>
   <width>300</width>
@@ -11,13 +11,13 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update</name>
-    <pv_name>$(P)$(D):Chan$(C):RdMeasPwr.VAL</pv_name>
+    <pv_name>$(P)$(D):sRdV.VAL</pv_name>
     <x>100</x>
     <y>40</y>
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button</name>
-    <pv_name>$(P)$(D):Chan$(C):cActive</pv_name>
+    <pv_name>$(P)$(D)-Offset:cOn</pv_name>
     <x>160</x>
     <y>85</y>
     <width>80</width>
@@ -25,7 +25,7 @@
   </widget>
   <widget type="led" version="2.0.0">
     <name>LED</name>
-    <pv_name>$(P)$(D):Chan$(C):sActive.VAL</pv_name>
+    <pv_name>$(P)$(D)-Offset:sOn.VAL</pv_name>
     <x>110</x>
     <y>100</y>
   </widget>
@@ -36,7 +36,7 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_2</name>
-    <text>Channel $(C)</text>
+    <text>$(D)</text>
     <x>60</x>
     <width>150</width>
     <height>30</height>
@@ -53,7 +53,7 @@
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_1</name>
-    <pv_name>$(P)$(D):Chan$(C):RdOffset.VAL</pv_name>
+    <pv_name>$(P)$(D)-Offset:sSetV.VAL</pv_name>
     <x>120</x>
     <y>160</y>
   </widget>
