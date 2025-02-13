@@ -102,6 +102,7 @@ record(ao, "$(P)$(DEV1)-Offset:cSetV"){
    field (OUT, "@n1912a.proto set_offset(1) $(PORT)")
    field (DRVL, "0")
    field (DRVH, "100")
+   info(autosavedFields,"VAL")
 }
 
 record(ao, "$(P)$(DEV2)-Offset:cSetV"){   
@@ -110,4 +111,5 @@ record(ao, "$(P)$(DEV2)-Offset:cSetV"){
    field (OUT, "@n1912a.proto set_offset(2) $(PORT)")
    field (DRVL, "0")
    field (DRVH, "100")
+   info(autosavedFields,"VAL")
 }
