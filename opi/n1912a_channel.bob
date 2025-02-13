@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-02-11 18:11:18 by marek-->
+<!--Saved on 2025-02-13 11:03:10 by marek-->
 <display version="2.0.0">
   <name>Display</name>
-  <width>300</width>
+  <width>350</width>
   <height>200</height>
   <widget type="label" version="2.0.0">
     <name>Label_1</name>
     <text>Power: </text>
+    <x>5</x>
     <y>40</y>
   </widget>
   <widget type="textupdate" version="2.0.0">
@@ -14,12 +15,14 @@
     <pv_name>$(P)$(D):sRdV.VAL</pv_name>
     <x>100</x>
     <y>40</y>
+    <format>1</format>
+    <precision>2</precision>
   </widget>
   <widget type="bool_button" version="2.0.0">
     <name>Boolean Button</name>
     <pv_name>$(P)$(D)-Offset:cOn</pv_name>
     <x>160</x>
-    <y>85</y>
+    <y>70</y>
     <width>80</width>
     <height>50</height>
   </widget>
@@ -27,12 +30,13 @@
     <name>LED</name>
     <pv_name>$(P)$(D)-Offset:sOn.VAL</pv_name>
     <x>110</x>
-    <y>100</y>
+    <y>85</y>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <text>Offset status: </text>
-    <y>100</y>
+    <x>5</x>
+    <y>80</y>
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_2</name>
@@ -47,14 +51,51 @@
   </widget>
   <widget type="label" version="2.0.0">
     <name>Label_3</name>
-    <text>Offset</text>
-    <x>10</x>
-    <y>160</y>
+    <text>Offset value:</text>
+    <x>5</x>
+    <y>140</y>
   </widget>
   <widget type="textupdate" version="2.0.0">
     <name>Text Update_1</name>
     <pv_name>$(P)$(D)-Offset:sSetV.VAL</pv_name>
-    <x>120</x>
-    <y>160</y>
+    <x>100</x>
+    <y>140</y>
+    <format>1</format>
+    <precision>2</precision>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>Text Entry</name>
+    <pv_name>$(P)$(D)-Offset:cSetV</pv_name>
+    <x>150</x>
+    <y>170</y>
+    <width>80</width>
+    <height>25</height>
+    <font>
+      <font family="FreeMono" style="BOLD" size="16.0">
+      </font>
+    </font>
+    <format>1</format>
+    <precision>2</precision>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>Change offset to:</text>
+    <x>5</x>
+    <y>170</y>
+    <width>150</width>
+    <font>
+      <font family="Source Sans Pro" style="BOLD" size="16.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>Rectangle</name>
+    <width>350</width>
+    <height>200</height>
+    <line_color>
+      <color red="255" green="179" blue="128">
+      </color>
+    </line_color>
+    <transparent>true</transparent>
   </widget>
 </display>

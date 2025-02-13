@@ -6,8 +6,6 @@ ReplyTimeout = 5000;
 
 DELAY = 50;
 
-#P = "HPRF-PwrMtr:";
-#DEV = "N1912A";
 
 get_id {
    out "*idn?";
@@ -21,8 +19,7 @@ get_err {
    in "%#s";
 }
 
-
-# query power
+# query power (status)
 
 fetch_power {
    out "FETC\$1:POW:AC?";
@@ -30,7 +27,7 @@ fetch_power {
    in "%f";
 }
 
-# query offset
+# query gain offset value (status)
 
 fetch_offset {
    out "SENS\$1:CORR:GAIN2?";
@@ -38,14 +35,7 @@ fetch_offset {
    in "%f";
 }
 
-# set offset
-
-set_offset {
-   out "SENS\$1:CORR:GAIN2 %f";
-}
-
-
-# query channel offset for the power meter setup
+# query gain offset status (status)
 # returns 0 or 1
 
 get_offset_status {
@@ -53,10 +43,16 @@ get_offset_status {
    in "%i";
 }
 
-# enable/disable a channel offset for the power meter setup
+# enable/disable gain offset (control)
 
 set_offset_status {
    out "SENS\$1:CORR:GAIN2:STAT %i";
    @init { get_offset_status; }
 }
 
+# set gain offset to new value (control)
+
+set_offset {
+   out "SENS\$1:CORR:GAIN2 %f";
+#   out "SENS\$1:CORR:GAIN2:STAT OFF";
+}

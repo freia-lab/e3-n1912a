@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-02-11 18:11:51 by marek-->
+<!--Saved on 2025-02-12 17:10:33 by marek-->
 <display version="2.0.0">
   <name>N1912A</name>
   <macros>
     <P>LLRF-Ctrl:</P>
   </macros>
+  <width>600</width>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
@@ -41,7 +42,7 @@
     <pv_name>$(P)Id.$</pv_name>
     <x>120</x>
     <y>570</y>
-    <width>660</width>
+    <width>480</width>
     <format>6</format>
   </widget>
   <widget type="action_button" version="3.0.0">
@@ -50,7 +51,7 @@
       <action type="open_display">
         <file>../freia-symbols/display-builder/asyn/asynRecord.bob</file>
         <macros>
-          <P>ioc25-daq</P>
+          <P>ioc30-n1912</P>
           <R>:asynRec</R>
         </macros>
         <target>window</target>
@@ -59,7 +60,7 @@
     </actions>
     <pv_name>ioc30-n1912:asynRec</pv_name>
     <text>asynRec</text>
-    <x>680</x>
+    <x>400</x>
     <y>510</y>
     <width>97</width>
     <height>40</height>
@@ -80,7 +81,7 @@
     <file>n1912a_channel.bob</file>
     <x>10</x>
     <y>90</y>
-    <width>300</width>
+    <width>350</width>
     <height>200</height>
     <resize>2</resize>
   </widget>
@@ -92,7 +93,7 @@
     <file>n1912a_channel.bob</file>
     <x>10</x>
     <y>300</y>
-    <width>300</width>
+    <width>350</width>
     <height>200</height>
     <resize>2</resize>
   </widget>

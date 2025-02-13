@@ -1,4 +1,4 @@
-# general purpose records
+# General purpose records
 
 record(lsi, "$(P)Id") {
    field (DESC, "RF power meter id")
