@@ -10,6 +10,7 @@ record(ai, "$(P)$(DEV1):sRdV") {
    field (INP, "@n1912a.proto fetch_power(1) $(PORT)")
    field (EGU, "dBm")
    field (PINI, "YES")
+   field (PREC, "1")
    field (SCAN, "1 second")
 }
 
@@ -19,6 +20,7 @@ record(ai, "$(P)$(DEV2):sRdV") {
    field (INP, "@n1912a.proto fetch_power(2) $(PORT)")
    field (EGU, "dBm")
    field (PINI, "YES")
+   field (PREC, "1")
    field (SCAN, "1 second")
 }
 
@@ -80,6 +82,7 @@ record(ai, "$(P)$(DEV1)-Offset:sSetV") {
    field (INP, "@n1912a.proto fetch_offset(1) $(PORT)")
    field (EGU, "dB")
    field (PINI, "YES")
+   field (PREC, "1")
    field (SCAN, "1 second")
 }
 
@@ -89,6 +92,7 @@ record(ai, "$(P)$(DEV2)-Offset:sSetV") {
    field (INP, "@n1912a.proto fetch_offset(2) $(PORT)")
    field (EGU, "dB")
    field (PINI, "YES")
+   field (PREC, "1")
    field (SCAN, "1 second")
 }
 
@@ -100,16 +104,22 @@ record(ao, "$(P)$(DEV1)-Offset:cSetV"){
    field (DESC, "n1912a control gain offset")
    field (DTYP, "stream")
    field (OUT, "@n1912a.proto set_offset(1) $(PORT)")
+   field (EGU, "dB")
    field (DRVL, "0")
    field (DRVH, "100")
-   info(autosavedFields,"VAL")
+   field (PINI, "YES")
+   field (PREC, "1")
+   info(autosaveFields,"VAL")
 }
 
 record(ao, "$(P)$(DEV2)-Offset:cSetV"){   
    field (DESC, "n1912a control gain offset")
    field (DTYP, "stream")
    field (OUT, "@n1912a.proto set_offset(2) $(PORT)")
+   field (EGU, "dB")
    field (DRVL, "0")
    field (DRVH, "100")
-   info(autosavedFields,"VAL")
+   field (PINI, "YES")
+   field (PREC, "1")
+   info(autosaveFields,"VAL")
 }
