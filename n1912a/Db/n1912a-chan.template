@@ -4,24 +4,24 @@
 # Reading measurment from power meter 
 ##########################################
 
-record(ai, "$(P)$(DEV1):sRdV") {
+record(ai, "$(P)$(DEV)-dBm:sRdV") {
    field (DESC, "n1912a read meas power")
    field (DTYP, "stream")
-   field (INP, "@n1912a.proto fetch_power(1) $(PORT)")
+   field (INP, "@n1912a.proto fetch_power($(CHAN)) $(PORT)")
    field (EGU, "dBm")
    field (PINI, "YES")
    field (PREC, "1")
    field (SCAN, "1 second")
+   field (FLNK, "$(P)$(DEV):sRdV")
+   info(autosaveFields,"DISA")
 }
 
-record(ai, "$(P)$(DEV2):sRdV") {
+record(calc, "$(P)$(DEV):sRdV") {
    field (DESC, "n1912a read meas power")
-   field (DTYP, "stream")
-   field (INP, "@n1912a.proto fetch_power(2) $(PORT)")
-   field (EGU, "dBm")
-   field (PINI, "YES")
-   field (PREC, "1")
-   field (SCAN, "1 second")
+   field (INPA, "$(P)$(DEV)-dBm:sRdV MS")
+   field (EGU, "W")
+   field (PREC, "6")
+   field (CALC, "0.001*(10**(A/10))")
 }
 
 ###########################################
@@ -29,67 +29,15 @@ record(ai, "$(P)$(DEV2):sRdV") {
 # Used for calibration
 ###########################################
 
-#--------------------------
-# get status of the offset
-#--------------------------
-record(bi, "$(P)$(DEV1)-Offset:sOn") {
-   field (DESC, "n1912a active = 1, off = 0")
-   field (DTYP, "stream")
-   field (INP, "@n1912a.proto get_offset_status(1) $(PORT)")
-   field (PINI, "YES")
-   field (ZNAM, "OFF")
-   field (ONAM, "ON")
-   field (SCAN, "1 second")
-}
-
-record(bi, "$(P)$(DEV2)-Offset:sOn") {
-   field (DESC, "n1912a active = 1, off = 0")
-   field (DTYP, "stream")
-   field (INP, "@n1912a.proto get_offset_status(2) $(PORT)")
-   field (PINI, "YES")
-   field (ZNAM, "OFF")
-   field (ONAM, "ON")
-   field (SCAN, "1 second")
-}
-
-#--------------------------
-# change status of the offset
-#--------------------------
-
-record(bo, "$(P)$(DEV1)-Offset:cOn") {
-   field (DESC, "n1912a activate = 1, deactivate = 0")
-   field (DTYP, "stream")
-   field (OUT, "@n1912a.proto set_offset_status(1) $(PORT)")
-   field (ZNAM, "OFF")
-   field (ONAM, "ON")
-}
-
-record(bo, "$(P)$(DEV2)-Offset:cOn") {
-   field (DESC, "n1912a activate = 1, deactivate = 0")
-   field (DTYP, "stream")
-   field (OUT, "@n1912a.proto set_offset_status(2) $(PORT)")
-   field (ZNAM, "OFF")
-   field (ONAM, "ON")
-}
 
 #--------------------------
 # read the gain offset
 #--------------------------
 
-record(ai, "$(P)$(DEV1)-Offset:sSetV") {
+record(ai, "$(P)$(DEV)-Offset:sSetV") {
    field (DESC, "n1912a status of gain offset")
    field (DTYP, "stream")
-   field (INP, "@n1912a.proto fetch_offset(1) $(PORT)")
-   field (EGU, "dB")
-   field (PINI, "YES")
-   field (PREC, "1")
-   field (SCAN, "1 second")
-}
-
-record(ai, "$(P)$(DEV2)-Offset:sSetV") {
-   field (DESC, "n1912a status of gain offset")
-   field (DTYP, "stream")
-   field (INP, "@n1912a.proto fetch_offset(2) $(PORT)")
+   field (INP, "@n1912a.proto fetch_offset($(CHAN)) $(PORT)")
    field (EGU, "dB")
    field (PINI, "YES")
    field (PREC, "1")
@@ -100,10 +48,10 @@ record(ai, "$(P)$(DEV2)-Offset:sSetV") {
 # set the gain offset
 #--------------------------
 
-record(ao, "$(P)$(DEV1)-Offset:cSetV"){   
+record(ao, "$(P)$(DEV)-Offset:cSetV"){   
    field (DESC, "n1912a control gain offset")
    field (DTYP, "stream")
-   field (OUT, "@n1912a.proto set_offset(1) $(PORT)")
+   field (OUT, "@n1912a.proto set_offset($(CHAN)) $(PORT)")
    field (EGU, "dB")
    field (DRVL, "0")
    field (DRVH, "100")
@@ -112,14 +60,30 @@ record(ao, "$(P)$(DEV1)-Offset:cSetV"){
    info(autosaveFields,"VAL")
 }
 
-record(ao, "$(P)$(DEV2)-Offset:cSetV"){   
-   field (DESC, "n1912a control gain offset")
+
+#--------------------------
+# get status of the offset
+#--------------------------
+record(bi, "$(P)$(DEV)-Offset:sOn") {
+   field (DESC, "n1912a active = 1, off = 0")
    field (DTYP, "stream")
-   field (OUT, "@n1912a.proto set_offset(2) $(PORT)")
-   field (EGU, "dB")
-   field (DRVL, "0")
-   field (DRVH, "100")
+   field (INP, "@n1912a.proto get_offset_status($(CHAN)) $(PORT)")
    field (PINI, "YES")
-   field (PREC, "1")
+   field (ZNAM, "OFF")
+   field (ONAM, "ON")
+   field (SCAN, "1 second")
+}
+
+#--------------------------
+# change status of the offset
+#--------------------------
+
+record(bo, "$(P)$(DEV)-Offset:cOn") {
+   field (DESC, "n1912a activate = 1, deactivate = 0")
+   field (DTYP, "stream")
+   field (OUT, "@n1912a.proto set_offset_status($(CHAN)) $(PORT)")
+   field (ZNAM, "OFF")
+   field (ONAM, "ON")
+   field (PINI, "YES")
    info(autosaveFields,"VAL")
 }

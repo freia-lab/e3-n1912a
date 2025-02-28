@@ -4,7 +4,7 @@ file "n1912a-gen.template" { pattern
 }
 
 file "n1912a-chan.template" { pattern
-{CHAN}
-{1}
-{2}
+{DEV CHAN}
+{"$(DEV1)" 1}
+{"$(DEV2)" 2}
 }

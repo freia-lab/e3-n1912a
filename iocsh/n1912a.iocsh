@@ -28,9 +28,4 @@ drvAsynIPPortConfigure("$(ASYN_PORT=PORT1)","$(IP):$(IP_PORT=5025)",0,0,0)
 epicsEnvSet("STREAM_PROTOCOL_PATH","$(n1912a_DB)")
 
 #Load your database defining the EPICS records
-dbLoadRecords("n1912a.db", "PORT=$(ASYN_PORT=PORT1),P=$(P),DEV1=$(DEV1=Chan1),DEV2=$(DEV2=Chan2),N=$(N)")
-
-
-# MJ:
-# commenting for now to avoid warnings
-# iocshLoad("$(autosave_DIR)/autosave.iocsh", "AS_TOP=$(TOP),IOCNAME=$(IOCNAME),IOCDIR=$(IOCDIR=n1912a)")
+dbLoadRecords("n1912a.db", "PORT=$(ASYN_PORT=PORT1),P=$(P),DEV1=$(DEV1),DEV2=$(DEV2),N=$(N)")
