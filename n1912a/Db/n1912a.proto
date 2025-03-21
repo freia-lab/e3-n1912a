@@ -56,3 +56,10 @@ set_offset {
    out "SENS\$1:CORR:GAIN2 %f";
 #   out "SENS\$1:CORR:GAIN2:STAT OFF";
 }
+
+# Send command
+
+send_cmd {
+   out "\$1";
+}
+

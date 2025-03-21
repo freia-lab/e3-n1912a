@@ -16,3 +16,15 @@ record(lsi, "$(P)N1912A-$(N):SystErr") {
    field (PINI, "YES")
    field (SCAN, "1 second")
 }
+
+record(bo, "$(P)N1912A-$(N):cmdLoc") {
+   field (DESC, "Set Local mode")
+   field (DTYP, "stream")
+   field (OUT, "@n1912a.proto send_cmd(SYST:LOC) $(PORT)")
+}
+
+record(bo, "$(P)N1912A-$(N):cmdRem") {
+   field (DESC, "Set Remote mode")
+   field (DTYP, "stream")
+   field (OUT, "@n1912a.proto send_cmd(SYST:REM) $(PORT)")
+}

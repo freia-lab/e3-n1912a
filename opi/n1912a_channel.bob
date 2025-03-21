@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-02-13 11:03:10 by marek-->
+<!--Saved on 2025-03-21 12:12:52 by konrad-->
 <display version="2.0.0">
   <name>Display</name>
+  <macros>
+    <P>LLRF-Ctrl:</P>
+    <D>InPwr</D>
+  </macros>
   <width>350</width>
   <height>200</height>
   <widget type="label" version="2.0.0">
@@ -97,5 +101,37 @@
       </color>
     </line_color>
     <transparent>true</transparent>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(pv_name).PROC</pv_name>
+        <value>1</value>
+        <description>Loc</description>
+      </action>
+    </actions>
+    <pv_name>LLRF-Ctrl:N1912A-2:cmdLoc</pv_name>
+    <x>210</x>
+    <y>10</y>
+    <width>50</width>
+    <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(pv_name).PROC</pv_name>
+        <value>1</value>
+        <description>Rem</description>
+      </action>
+    </actions>
+    <pv_name>LLRF-Ctrl:N1912A-2:cmdRem</pv_name>
+    <x>270</x>
+    <y>10</y>
+    <width>50</width>
+    <tooltip>$(actions)</tooltip>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
 </display>
